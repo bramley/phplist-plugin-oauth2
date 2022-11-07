@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname(__FILE__).'/accesscheck.php';
+namespace phpList\plugin\OAuth2;
 
 if (!$GLOBALS['commandline'] && !$GLOBALS['inRemoteCall']) {
     // browser session
@@ -478,7 +478,7 @@ if (empty($bounce_mailbox) && (empty($bounce_mailbox_host) || empty($bounce_mail
 }
 
 // lets not do this unless we do some locking first
-register_shutdown_function('processbounces_shutdown');
+register_shutdown_function(__NAMESPACE__ . '\processbounces_shutdown');
 $abort = ignore_user_abort(1);
 if (!empty($GLOBALS['commandline']) && isset($cline['f'])) {
     // force set, so kill other processes
