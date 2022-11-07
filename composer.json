@@ -1,0 +1,8 @@
+{
+    "config": {
+        "vendor-dir": "plugins/OAuth2/vendor"
+    },
+    "require": {
+        "javanile/php-imap2": "*"
+    }
+}
