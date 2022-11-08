@@ -1,0 +1,9 @@
+version 1.0.0+20221108
+Duncan Cameron (6):
+      initial commit
+      Add php-imap2 and dependent packages
+      Core phplist file
+      Changes to core phplist file to use replacement imap_xxx functions
+      Initial version
+      Remove unnecessary package files
+
