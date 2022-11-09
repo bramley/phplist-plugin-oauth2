@@ -54,18 +54,21 @@ $query = http_build_query([
     'response_type' => 'code id_token',
     'response_mode' => 'form_post',
     'approval_prompt' => 'auto',
+    'prompt' => 'login',
     'nonce' => bin2hex(random_bytes(5)),
 ]);
 $authUri = sprintf('https://login.microsoftonline.com/%s/oauth2/v2.0/authorize?', $tenantId) . $query;
 
 $accessToken = getConfig('oauth2_access_token');
+$authenticatedEmail = getConfig('oauth2_id_email');
 
 if ($accessToken != '') {
     $expiresAt = date(DATE_RFC2822, getConfig('oauth2_expires_at'));
     echo <<<END
     Access token is<br>
     <pre> $accessToken</pre><br>
-    Expires at $expiresAt
+    Expires at $expiresAt<br>
+    Associated with email address <code> $authenticatedEmail</code><br>
 <form method="post">
     <input type="submit" name="refresh" value="Refresh access token">
 </form>
@@ -76,7 +79,7 @@ END;
     <center>
     <button onclick="window.location='<?=$authUri; ?>'">
         <img height="24" width="24" style="vertical-align:middle" src="/microsoft.svg" />
-        Sign in with Microsoft
+        Sign in with Microsoft to create a new access token
     </button>
     </center>
 </p>

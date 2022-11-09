@@ -27,12 +27,12 @@ class OAuth2 extends phplistPlugin
     public $documentationUrl = 'https://resources.phplist.com/plugin/oauth2';
     public $commandlinePluginPages = ['processbounces'];
     public $topMenuLinks = [
-        'processbouncesoauth2' => ['category' => 'system'],
         'authenticate' => ['category' => 'system'],
+        'processbouncesoauth2' => ['category' => 'system'],
     ];
     public $pageTitles = [
-        'processbouncesoauth2' => 'Process bounces using OAuth2',
         'authenticate' => 'Authenticate using OAuth2',
+        'processbouncesoauth2' => 'Process bounces using OAuth2',
     ];
     public $publicPages = ['authcallback'];
 
@@ -92,7 +92,7 @@ class OAuth2 extends phplistPlugin
     }
 
     /**
-     * Use this hook to set phpmailer to use oauth2
+     * Use this hook to set phpmailer to use oauth2.
      *
      * @return array
      */
