@@ -90,4 +90,17 @@ class OAuth2 extends phplistPlugin
             'Common Plugin enabled' => phpListPlugin::isEnabled('CommonPlugin'),
         ];
     }
+
+    /**
+     * Use this hook to set phpmailer to use oauth2
+     *
+     * @return array
+     */
+    public function messageHeaders($mail)
+    {
+        $mail->AuthType = 'XOAUTH2';
+        $mail->setOAuth(new phpList\plugin\OAuth2\OAuthTokenProvider());
+
+        return [];
+    }
 }
