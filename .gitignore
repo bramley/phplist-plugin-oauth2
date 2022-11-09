@@ -1,3 +1,5 @@
+.php_cs.cache
+
 plugins/OAuth2/vendor/guzzlehttp/psr7/*
 !plugins/OAuth2/vendor/guzzlehttp/psr7/LICENSE
 !plugins/OAuth2/vendor/guzzlehttp/psr7/src/
