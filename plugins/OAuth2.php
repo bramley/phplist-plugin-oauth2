@@ -75,6 +75,13 @@ class OAuth2 extends phplistPlugin
                 'allowempty' => true,
                 'category' => 'OAuth2',
             ],
+            'oauth2_imap_mailbox' => [
+                'description' => s('IMAP Mailbox/folder, such as INBOX'),
+                'type' => 'text',
+                'value' => 'INBOX',
+                'allowempty' => false,
+                'category' => 'OAuth2',
+            ],
         );
         $this->coderoot = dirname(__FILE__) . '/' . __CLASS__ . '/';
         $this->version = file_get_contents($this->coderoot . self::VERSION_FILE);
