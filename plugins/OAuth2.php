@@ -25,7 +25,6 @@ class OAuth2 extends phplistPlugin
     public $authors = 'Duncan Cameron';
     public $description = 'Use OAuth2 for authentication';
     public $documentationUrl = 'https://resources.phplist.com/plugin/oauth2';
-    public $commandlinePluginPages = ['processbounces'];
     public $topMenuLinks = [
         'authenticate' => ['category' => 'system'],
         'processbouncesoauth2' => ['category' => 'system'],
@@ -34,7 +33,9 @@ class OAuth2 extends phplistPlugin
         'authenticate' => 'Authenticate using OAuth2',
         'processbouncesoauth2' => 'Process bounces using OAuth2',
     ];
+    public $commandlinePluginPages = ['processbouncesoauth2'];
     public $publicPages = ['authcallback'];
+    public $remotePages = ['processbouncesoauth2'];
 
     public function __construct()
     {
