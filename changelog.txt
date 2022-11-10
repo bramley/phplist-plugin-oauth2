@@ -1,3 +1,6 @@
+version 1.1.1+20221110
+      Add configuration setting to control using OAuth2 when sending emails
+
 version 1.1.0+20221109
       Use OAuth2 with phpmailer
       Minor changes

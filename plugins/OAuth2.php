@@ -67,6 +67,13 @@ class OAuth2 extends phplistPlugin
                 'allowempty' => false,
                 'category' => 'OAuth2',
             ],
+            'oauth2_use_for_sending' => [
+                'description' => s('Use OAuth2 for authentication when sending emails with SMTP'),
+                'type' => 'boolean',
+                'value' => false,
+                'allowempty' => true,
+                'category' => 'OAuth2',
+            ],
         );
         $this->coderoot = dirname(__FILE__) . '/' . __CLASS__ . '/';
         $this->version = file_get_contents($this->coderoot . self::VERSION_FILE);
@@ -98,8 +105,10 @@ class OAuth2 extends phplistPlugin
      */
     public function messageHeaders($mail)
     {
-        $mail->AuthType = 'XOAUTH2';
-        $mail->setOAuth(new phpList\plugin\OAuth2\OAuthTokenProvider());
+        if (getConfig('oauth2_use_for_sending')) {
+            $mail->AuthType = 'XOAUTH2';
+            $mail->setOAuth(new phpList\plugin\OAuth2\OAuthTokenProvider());
+        }
 
         return [];
     }
