@@ -1,6 +1,7 @@
 {
     "config": {
-        "vendor-dir": "plugins/OAuth2/vendor"
+        "vendor-dir": "plugins/OAuth2/vendor",
+        "optimize-autoloader": true
     },
     "require": {
         "javanile/php-imap2": "*"

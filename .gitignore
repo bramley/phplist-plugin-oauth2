@@ -14,8 +14,6 @@ plugins/OAuth2/vendor/pimple/pimple/*
 !plugins/OAuth2/vendor/pimple/pimple/src/
 
 plugins/OAuth2/vendor/psr/container/*
-!plugins/OAuth2/vendor/psr/container/LICENSE
-!plugins/OAuth2/vendor/psr/container/src/
 
 plugins/OAuth2/vendor/psr/http-factory/*
 !plugins/OAuth2/vendor/psr/http-factory/LICENSE

@@ -36,6 +36,7 @@ This plugin is free but if you install and find it useful then a donation to sup
 ## Version history ##
 
     version         Description
+    1.1.2+20221110  Remove Psr/Container package so that the version included with Common Plugin will be used
     1.1.1+20221110  Add configuration setting to control using OAuth2 when sending emails
     1.1.0+20221109  Use OAuth2 with phpmailer
     1.0.0+20221108  Initial version
