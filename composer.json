@@ -1,6 +1,7 @@
 {
     "config": {
         "vendor-dir": "plugins/OAuth2/vendor",
+        "prepend-autoloader": false,
         "optimize-autoloader": true
     },
     "require": {
