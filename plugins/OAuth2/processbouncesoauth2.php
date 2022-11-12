@@ -54,24 +54,25 @@ function imap_qprint($string)
     return imap2_qprint($string);
 }
 
-$accessToken = getConfig('oauth2_access_token');
+$serializedAccessToken = getConfig('oauth2_access_token_object');
 
-if ($accessToken == '') {
+if ($serializedAccessToken == '') {
     $message = 'OAuth2 access token is required';
     echo $message;
 
     return;
 }
-$expiresAt = getConfig('oauth2_expires_at');
+$accessToken = unserialize(base64_decode($serializedAccessToken), ['allowed_classes' => true]);
 
-if ($expiresAt < time()) {
-    $message = sprintf('OAuth2 access token expired at %s', date(DATE_RFC2822, $expiresAt));
-    logEvent($message);
-    echo $message;
-
-    return;
+if ($accessToken->hasExpired()) {
+    $provider = OAuthProvider::getProvider();
+    $newAccessToken = $provider->getAccessToken(
+        'refresh_token',
+        ['refresh_token' => $accessToken->getRefreshToken()]
+    );
+    SaveConfig('oauth2_access_token_object', base64_encode(serialize($newAccessToken)));
 }
 
-$bounce_mailbox_password = $accessToken;
+$bounce_mailbox_password = $accessToken->getToken();
 
 require __DIR__ . '/processbounces.php';

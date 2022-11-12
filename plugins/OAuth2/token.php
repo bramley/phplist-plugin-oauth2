@@ -1,0 +1,31 @@
+<?php
+
+use phpList\plugin\Common\PageURL;
+
+$serializedAccessToken = getConfig('oauth2_access_token_object');
+
+if ($serializedAccessToken != '') {
+    $accessToken = unserialize(base64_decode($serializedAccessToken), ['allowed_classes' => true]);
+    $expiresAt = date(DATE_RFC2822, $accessToken->getExpires());
+    $authenticatedEmail = getConfig('oauth2_id_email');
+    $refreshUrl = new PageURL('authorise', ['pi' => $_GET['pi'], 'refresh' => 1]);
+    echo <<<END
+    Access token is<br>
+    <pre> $accessToken</pre><br>
+    Expires at $expiresAt<br>
+    Associated with email address <code> $authenticatedEmail</code><br>
+<form method="post" action="$refreshUrl">
+    <input type="submit" name="refresh" value="Refresh access token">
+</form>
+END;
+}
+$authoriseUrl = new PageURL('authorise', ['pi' => $_GET['pi']]);
+?>
+<p>
+    <center>
+    <button onclick="window.location='<?=$authoriseUrl; ?>'">
+        <img height="24" width="24" style="vertical-align:middle" src="/microsoft.svg" />
+        Sign in with Microsoft to create a new access token
+    </button>
+    </center>
+</p>

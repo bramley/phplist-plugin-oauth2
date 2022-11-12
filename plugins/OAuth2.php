@@ -26,15 +26,14 @@ class OAuth2 extends phplistPlugin
     public $description = 'Use OAuth2 for authentication';
     public $documentationUrl = 'https://resources.phplist.com/plugin/oauth2';
     public $topMenuLinks = [
-        'authenticate' => ['category' => 'system'],
+        'token' => ['category' => 'system'],
         'processbouncesoauth2' => ['category' => 'system'],
     ];
     public $pageTitles = [
-        'authenticate' => 'Authenticate using OAuth2',
+        'token' => 'OAuth2 access token',
         'processbouncesoauth2' => 'Process bounces using OAuth2',
     ];
     public $commandlinePluginPages = ['processbouncesoauth2'];
-    public $publicPages = ['authcallback'];
     public $remotePages = ['processbouncesoauth2'];
 
     public function __construct()
@@ -115,7 +114,7 @@ class OAuth2 extends phplistPlugin
     {
         if (getConfig('oauth2_use_for_sending')) {
             $mail->AuthType = 'XOAUTH2';
-            $mail->setOAuth(new phpList\plugin\OAuth2\OAuthTokenProvider());
+            $mail->setOAuth(new phpList\plugin\OAuth2\OAuthProvider());
         }
 
         return [];
