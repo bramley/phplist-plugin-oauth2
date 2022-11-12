@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '2b420d7729f5cc5835a36892f0e0492ab4961959',
+    'reference' => 'd8c88b5b69bb6d96412a7cff0ea52231310d6b24',
     'name' => '__root__',
   ),
   'versions' => 
@@ -42,7 +42,34 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '2b420d7729f5cc5835a36892f0e0492ab4961959',
+      'reference' => 'd8c88b5b69bb6d96412a7cff0ea52231310d6b24',
+    ),
+    'firebase/php-jwt' => 
+    array (
+      'pretty_version' => 'v6.3.1',
+      'version' => '6.3.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'ddfaddcb520488b42bca3a75e17e9dd53c3667da',
+    ),
+    'guzzlehttp/guzzle' => 
+    array (
+      'pretty_version' => '7.5.0',
+      'version' => '7.5.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'b50a2a1251152e43f6a37f0fa053e730a67d25ba',
+    ),
+    'guzzlehttp/promises' => 
+    array (
+      'pretty_version' => '1.5.2',
+      'version' => '1.5.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'b94b2807d85443f9719887892882d0329d1e2598',
     ),
     'guzzlehttp/psr7' => 
     array (
@@ -62,6 +89,24 @@ private static $installed = array (
       ),
       'reference' => 'f96973ecf0d2d5005ee607faa13b0a5f61745ad9',
     ),
+    'league/oauth2-client' => 
+    array (
+      'pretty_version' => '2.6.1',
+      'version' => '2.6.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '2334c249907190c132364f5dae0287ab8666aa19',
+    ),
+    'paragonie/random_compat' => 
+    array (
+      'pretty_version' => 'v9.99.100',
+      'version' => '9.99.100.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '996434e5492cb4c3edcb9168db6fbb1359ef965a',
+    ),
     'pimple/pimple' => 
     array (
       'pretty_version' => 'v3.5.0',
@@ -79,6 +124,22 @@ private static $installed = array (
       array (
       ),
       'reference' => 'c71ecc56dfe541dbd90c5360474fbc405f8d5963',
+    ),
+    'psr/http-client' => 
+    array (
+      'pretty_version' => '1.0.1',
+      'version' => '1.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '2dfb5f6c5eff0e91e20e913f8c5452ed95b86621',
+    ),
+    'psr/http-client-implementation' => 
+    array (
+      'provided' => 
+      array (
+        0 => '1.0',
+      ),
     ),
     'psr/http-factory' => 
     array (
@@ -121,6 +182,15 @@ private static $installed = array (
       ),
       'reference' => '120b605dfeb996808c31b6477290a714d356e822',
     ),
+    'symfony/deprecation-contracts' => 
+    array (
+      'pretty_version' => 'v2.5.2',
+      'version' => '2.5.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'e8b495ea28c1d97b5e0c121748d6f9b53d075c66',
+    ),
     'symfony/polyfill-iconv' => 
     array (
       'pretty_version' => 'v1.27.0',
@@ -138,6 +208,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '8ad114f6b39e2c98a8b0e3bd907732c207c2b534',
+    ),
+    'thenetworg/oauth2-azure' => 
+    array (
+      'pretty_version' => 'v2.1.1',
+      'version' => '2.1.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '06fb2d620fb6e6c934f632c7ec7c5ea2e978a844',
     ),
     'zbateson/mail-mime-parser' => 
     array (

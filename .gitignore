@@ -1,5 +1,17 @@
 .php_cs.cache
 
+plugins/OAuth2/vendor/firebase/php-jwt/*
+!plugins/OAuth2/vendor/firebase/php-jwt/LICENSE
+!plugins/OAuth2/vendor/firebase/php-jwt/src/
+
+plugins/OAuth2/vendor/guzzlehttp/guzzle/*
+!plugins/OAuth2/vendor/guzzlehttp/guzzle/LICENSE
+!plugins/OAuth2/vendor/guzzlehttp/guzzle/src/
+
+plugins/OAuth2/vendor/guzzlehttp/promises/*
+!plugins/OAuth2/vendor/guzzlehttp/promises/LICENSE
+!plugins/OAuth2/vendor/guzzlehttp/promises/src/
+
 plugins/OAuth2/vendor/guzzlehttp/psr7/*
 !plugins/OAuth2/vendor/guzzlehttp/psr7/LICENSE
 !plugins/OAuth2/vendor/guzzlehttp/psr7/src/
@@ -9,11 +21,27 @@ plugins/OAuth2/vendor/javanile/php-imap2/*
 !plugins/OAuth2/vendor/javanile/php-imap2/bootstrap.php
 !plugins/OAuth2/vendor/javanile/php-imap2/src/
 
+plugins/OAuth2/vendor/league/oauth2-client/*
+!plugins/OAuth2/vendor/league/oauth2-client/LICENSE
+!plugins/OAuth2/vendor/league/oauth2-client/src/
+
+plugins/OAuth2/vendor/paragonie/random_compat/*
+!plugins/OAuth2/vendor/paragonie/random_compat/LICENSE
+!plugins/OAuth2/vendor/paragonie/random_compat/psalm-autoload.php
+!plugins/OAuth2/vendor/paragonie/random_compat/psalm.xml
+!plugins/OAuth2/vendor/paragonie/random_compat/dist/
+!plugins/OAuth2/vendor/paragonie/random_compat/lib/
+!plugins/OAuth2/vendor/paragonie/random_compat/other/
+
 plugins/OAuth2/vendor/pimple/pimple/*
 !plugins/OAuth2/vendor/pimple/pimple/LICENSE
 !plugins/OAuth2/vendor/pimple/pimple/src/
 
 plugins/OAuth2/vendor/psr/container/*
+
+plugins/OAuth2/vendor/psr/http-client/*
+!plugins/OAuth2/vendor/psr/http-client/LICENSE
+!plugins/OAuth2/vendor/psr/http-client/src/
 
 plugins/OAuth2/vendor/psr/http-factory/*
 !plugins/OAuth2/vendor/psr/http-factory/LICENSE
@@ -40,6 +68,10 @@ plugins/OAuth2/vendor/symfony/polyfill-mbstring/*
 !plugins/OAuth2/vendor/symfony/polyfill-mbstring/bootstrap80.php
 !plugins/OAuth2/vendor/symfony/polyfill-mbstring/Mbstring.php
 !plugins/OAuth2/vendor/symfony/polyfill-mbstring/Resources/
+
+plugins/OAuth2/vendor/thenetworg/oauth2-azure/*
+!plugins/OAuth2/vendor/thenetworg/oauth2-azure/LICENSE.md
+!plugins/OAuth2/vendor/thenetworg/oauth2-azure/src/
 
 plugins/OAuth2/vendor/zbateson/mail-mime-parser/*
 !plugins/OAuth2/vendor/zbateson/mail-mime-parser/LICENSE

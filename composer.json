@@ -5,6 +5,7 @@
         "optimize-autoloader": true
     },
     "require": {
-        "javanile/php-imap2": "*"
+        "javanile/php-imap2": "*",
+        "thenetworg/oauth2-azure": "^2.1"
     }
 }
