@@ -11,7 +11,8 @@ class OAuthProvider implements \PHPMailer\PHPMailer\OAuthTokenProvider
      */
     public static function getProvider()
     {
-        return self::AzureProvider();
+        //~ return self::AzureProvider();
+        return self::GitHubProvider();
     }
 
     /**
@@ -72,6 +73,24 @@ class OAuthProvider implements \PHPMailer\PHPMailer\OAuthTokenProvider
             'redirectUri' => getConfig('oauth2_client_redirect_url'),
             'scopes' => $scopes,
             'defaultEndPointVersion' => '2.0',
+        ]);
+
+        return $provider;
+    }
+
+    /**
+     * Creates an OAuth2 provider for GitHub.
+     *
+     * @return TheNetworg\OAuth2\Client\Provider\Azure
+     */
+    private static function GitHubProvider()
+    {
+        $scopes = ['user','user:email','repo'];
+        $provider = new \League\OAuth2\Client\Provider\Github([
+            'clientId' => getConfig('oauth2_client_id'),
+            'clientSecret' => getConfig('oauth2_client_secret'),
+            'redirectUri' => getConfig('oauth2_client_redirect_url'),
+            'scopes' => $scopes,
         ]);
 
         return $provider;

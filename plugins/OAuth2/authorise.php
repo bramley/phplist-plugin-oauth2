@@ -40,7 +40,11 @@ try {
     OAuthProvider::saveAccessTokenInConfig($accessToken);
 
     $resourceOwner = $provider->getResourceOwner($accessToken);
-    SaveConfig('oauth2_id_email', $resourceOwner->claim('email'));
+    $fields = $resourceOwner->toArray();
+
+    if (isset($fields['email'])) {
+        SaveConfig('oauth2_id_email', $fields['email']);
+    }
     header('Location: ' . new PageURL('token', ['pi' => $_GET['pi']]));
 
     exit;

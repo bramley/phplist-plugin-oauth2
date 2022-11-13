@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'd8c88b5b69bb6d96412a7cff0ea52231310d6b24',
+    'reference' => '0744be1577f5bb214ddd69bdd49cd273ed76f957',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'd8c88b5b69bb6d96412a7cff0ea52231310d6b24',
+      'reference' => '0744be1577f5bb214ddd69bdd49cd273ed76f957',
     ),
     'firebase/php-jwt' => 
     array (
@@ -73,6 +73,15 @@
       array (
       ),
       'reference' => '2334c249907190c132364f5dae0287ab8666aa19',
+    ),
+    'league/oauth2-github' => 
+    array (
+      'pretty_version' => '2.0.0',
+      'version' => '2.0.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'e63d64f3ec167c09232d189c6b0c397458a99357',
     ),
     'paragonie/random_compat' => 
     array (
