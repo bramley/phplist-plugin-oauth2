@@ -1,3 +1,6 @@
+version 1.2.2+20221113
+      Set tenant property on the provider
+
 version 1.2.1+20221113
       Improve error handling
       Add dependency on phplist version

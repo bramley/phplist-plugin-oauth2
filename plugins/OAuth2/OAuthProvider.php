@@ -73,6 +73,7 @@ class OAuthProvider implements \PHPMailer\PHPMailer\OAuthTokenProvider
             'scopes' => $scopes,
             'defaultEndPointVersion' => '2.0',
         ]);
+        $provider->tenant = getConfig('oauth2_tenant_id');
 
         return $provider;
     }
