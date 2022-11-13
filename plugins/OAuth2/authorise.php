@@ -6,13 +6,12 @@ use phpList\plugin\OAuth2\OAuthProvider;
 $provider = OAuthProvider::getProvider();
 
 if (isset($_POST['refresh'])) {
-    $serializedAccessToken = getConfig('oauth2_access_token_object');
-    $accessToken = unserialize(base64_decode($serializedAccessToken), ['allowed_classes' => true]);
+    $accessToken = OAuthProvider::getAccessTokenFromConfig();
     $newAccessToken = $provider->getAccessToken(
         'refresh_token',
         ['refresh_token' => $accessToken->getRefreshToken()]
     );
-    SaveConfig('oauth2_access_token_object', base64_encode(serialize($newAccessToken)));
+    OAuthProvider::saveAccessTokenInConfig($newAccessToken);
     header('Location: ' . new PageURL('token', ['pi' => $_GET['pi']]));
 
     exit;
@@ -38,7 +37,7 @@ try {
         'authorization_code',
         ['code' => $_GET['code']]
     );
-    SaveConfig('oauth2_access_token_object', base64_encode(serialize($accessToken)));
+    OAuthProvider::saveAccessTokenInConfig($accessToken);
 
     $resourceOwner = $provider->getResourceOwner($accessToken);
     SaveConfig('oauth2_id_email', $resourceOwner->claim('email'));

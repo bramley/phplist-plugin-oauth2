@@ -15,6 +15,28 @@ class OAuthProvider implements \PHPMailer\PHPMailer\OAuthTokenProvider
     }
 
     /**
+     * Get the access token from the config table.
+     *
+     * @return League\OAuth2\Client\Token\AccessToken | null
+     */
+    public static function getAccessTokenFromConfig()
+    {
+        $serializedAccessToken = getConfig('oauth2_access_token_object');
+
+        return $serializedAccessToken === ''
+            ? null
+            : unserialize(base64_decode($serializedAccessToken), ['allowed_classes' => true]);
+    }
+
+    /**
+     * Save the access token in the config table.
+     */
+    public static function saveAccessTokenInConfig($accessToken)
+    {
+        SaveConfig('oauth2_access_token_object', base64_encode(serialize($accessToken)));
+    }
+
+    /**
      * Called by phpmailer to get the bearer token.
      *
      * @return string
@@ -24,8 +46,7 @@ class OAuthProvider implements \PHPMailer\PHPMailer\OAuthTokenProvider
         global $bounce_mailbox_user;
 
         $user = $bounce_mailbox_user;
-        $serializedAccessToken = getConfig('oauth2_access_token_object');
-        $accessToken = unserialize(base64_decode($serializedAccessToken), ['allowed_classes' => true]);
+        $accessToken = self::getAccessTokenFromConfig();
         $auth = base64_encode("user=$user\001auth=Bearer $accessToken\001\001");
 
         return $auth;
