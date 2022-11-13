@@ -54,15 +54,14 @@ function imap_qprint($string)
     return imap2_qprint($string);
 }
 
-$serializedAccessToken = getConfig('oauth2_access_token_object');
+$accessToken = OAuthProvider::getAccessTokenFromConfig();
 
-if ($serializedAccessToken == '') {
+if ($accessToken === null) {
     $message = 'OAuth2 access token is required';
     echo $message;
 
     return;
 }
-$accessToken = unserialize(base64_decode($serializedAccessToken), ['allowed_classes' => true]);
 
 if ($accessToken->hasExpired()) {
     $provider = OAuthProvider::getProvider();
@@ -70,7 +69,8 @@ if ($accessToken->hasExpired()) {
         'refresh_token',
         ['refresh_token' => $accessToken->getRefreshToken()]
     );
-    SaveConfig('oauth2_access_token_object', base64_encode(serialize($newAccessToken)));
+    OAuthProvider::saveAccessTokenInConfig($newAccessToken);
+    $accessToken = $newAccessToken;
 }
 
 $bounce_mailbox_password = $accessToken->getToken();

@@ -1,11 +1,11 @@
 <?php
 
 use phpList\plugin\Common\PageURL;
+use phpList\plugin\OAuth2\OAuthProvider;
 
-$serializedAccessToken = getConfig('oauth2_access_token_object');
+$accessToken = OAuthProvider::getAccessTokenFromConfig();
 
-if ($serializedAccessToken != '') {
-    $accessToken = unserialize(base64_decode($serializedAccessToken), ['allowed_classes' => true]);
+if ($accessToken !== null) {
     $expiresAt = date(DATE_RFC2822, $accessToken->getExpires());
     $authenticatedEmail = getConfig('oauth2_id_email');
     $refreshUrl = new PageURL('authorise', ['pi' => $_GET['pi'], 'refresh' => 1]);
