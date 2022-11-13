@@ -36,6 +36,7 @@ This plugin is free but if you install and find it useful then a donation to sup
 ## Version history ##
 
     version         Description
+    1.2.0+20221113  Use the PHP League OAuth2 client package
     1.1.3+20221110  Allow IMAP mailbox/folder to be configurable
                     Run processbouncesoauth2 page as a remote page
     1.1.2+20221110  Remove Psr/Container package so that the version included with Common Plugin will be used

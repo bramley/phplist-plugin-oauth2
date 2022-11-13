@@ -21,11 +21,11 @@ class OAuthProvider implements \PHPMailer\PHPMailer\OAuthTokenProvider
      */
     public static function getAccessTokenFromConfig()
     {
-        $serializedAccessToken = getConfig('oauth2_access_token_object');
+        $jsonAccessToken = getConfig('oauth2_access_token_json');
 
-        return $serializedAccessToken === ''
+        return $jsonAccessToken === ''
             ? null
-            : unserialize(base64_decode($serializedAccessToken), ['allowed_classes' => true]);
+            : new \League\OAuth2\Client\Token\AccessToken(json_decode($jsonAccessToken, true));
     }
 
     /**
@@ -33,7 +33,7 @@ class OAuthProvider implements \PHPMailer\PHPMailer\OAuthTokenProvider
      */
     public static function saveAccessTokenInConfig($accessToken)
     {
-        SaveConfig('oauth2_access_token_object', base64_encode(serialize($accessToken)));
+        SaveConfig('oauth2_access_token_json', json_encode($accessToken));
     }
 
     /**

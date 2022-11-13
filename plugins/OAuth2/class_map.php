@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'phpList\plugin\OAuth2\OAuthTokenProvider' => $base . '/OAuth2/OAuthTokenProvider.php',
+    'phpList\plugin\OAuth2\OAuthProvider' => $base . '/OAuth2/OAuthProvider.php',
 ];
