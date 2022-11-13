@@ -1,3 +1,7 @@
+version 1.2.1+20221113
+      Improve error handling
+      Add dependency on phplist version
+
 version 1.2.0+20221113
       Use this autoloader after Common Plugin
       Add packages for League OAuth2 client

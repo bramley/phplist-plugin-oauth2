@@ -102,6 +102,7 @@ class OAuth2 extends phplistPlugin
     {
         return [
             'Common Plugin enabled' => phpListPlugin::isEnabled('CommonPlugin'),
+            'phpList version 3.6.10 or later' => version_compare(VERSION, '3.6.10') >= 0,
         ];
     }
 
