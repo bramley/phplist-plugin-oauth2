@@ -6,23 +6,35 @@ use phpList\plugin\OAuth2\OAuthProvider;
 $provider = OAuthProvider::getProvider();
 
 if (isset($_POST['refresh'])) {
-    $accessToken = OAuthProvider::getAccessTokenFromConfig();
-    $newAccessToken = $provider->getAccessToken(
-        'refresh_token',
-        ['refresh_token' => $accessToken->getRefreshToken()]
-    );
-    OAuthProvider::saveAccessTokenInConfig($newAccessToken);
-    header('Location: ' . new PageURL('token', ['pi' => $_GET['pi']]));
+    try {
+        $accessToken = OAuthProvider::getAccessTokenFromConfig();
+        $newAccessToken = $provider->getAccessToken(
+            'refresh_token',
+            ['refresh_token' => $accessToken->getRefreshToken()]
+        );
+        OAuthProvider::saveAccessTokenInConfig($newAccessToken);
+        header('Location: ' . new PageURL('token', ['pi' => $_GET['pi']]));
 
-    exit;
+        exit;
+    } catch (\Exception $e) {
+        echo $e->getMessage();
+
+        return;
+    }
 }
 
 if (!isset($_GET['code'])) {
-    $authorizationUrl = $provider->getAuthorizationUrl();
-    $_SESSION['OAuth2.state'] = $provider->getState();
-    header('Location: ' . $authorizationUrl);
+    try {
+        $authorizationUrl = $provider->getAuthorizationUrl();
+        $_SESSION['OAuth2.state'] = $provider->getState();
+        header('Location: ' . $authorizationUrl);
 
-    exit;
+        exit;
+    } catch (\Exception $e) {
+        echo $e->getMessage();
+
+        return;
+    }
 }
 
 if (empty($_GET['state']) || (isset($_SESSION['oauth2state']) && $_GET['state'] !== $_SESSION['oauth2state'])) {
@@ -49,7 +61,11 @@ try {
 
     exit;
 } catch (\League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
-    exit($e->getMessage());
+    echo $e->getMessage();
+
+    return;
 } catch (\Exception $e) {
-    exit($e->getMessage());
+    echo $e->getMessage();
+
+    return;
 }
