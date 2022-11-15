@@ -36,6 +36,7 @@ This plugin is free but if you install and find it useful then a donation to sup
 ## Version history ##
 
     version         Description
+    1.3.0+20221115  Refresh the access token when processing bounces
     1.2.2+20221113  Set tenant property on the provider
     1.2.1+20221113  Improve error handling
     1.2.0+20221113  Use the PHP League OAuth2 client package

@@ -374,7 +374,7 @@ function processPop($server, $user, $password)
         return false;
     }
 
-    return processMessages($link, 100000);
+    return processMessages($link, getConfig('oauth2_imap_max_bounces'));
 }
 
 function processMbox($file)
