@@ -62,17 +62,13 @@ if ($accessToken === null) {
 
     return;
 }
+$provider = OAuthProvider::getProvider();
+$newAccessToken = $provider->getAccessToken(
+    'refresh_token',
+    ['refresh_token' => $accessToken->getRefreshToken()]
+);
+OAuthProvider::saveAccessTokenInConfig($newAccessToken);
 
-if ($accessToken->hasExpired()) {
-    $provider = OAuthProvider::getProvider();
-    $newAccessToken = $provider->getAccessToken(
-        'refresh_token',
-        ['refresh_token' => $accessToken->getRefreshToken()]
-    );
-    OAuthProvider::saveAccessTokenInConfig($newAccessToken);
-    $accessToken = $newAccessToken;
-}
-
-$bounce_mailbox_password = $accessToken->getToken();
+$bounce_mailbox_password = $newAccessToken->getToken();
 
 require __DIR__ . '/processbounces.php';
