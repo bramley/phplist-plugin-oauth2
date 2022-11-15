@@ -24,7 +24,7 @@ class ComposerAutoloaderInitbf53eac01490a8bb2135efd4dae92556
 
         require __DIR__ . '/platform_check.php';
 
-        spl_autoload_register(array('ComposerAutoloaderInitbf53eac01490a8bb2135efd4dae92556', 'loadClassLoader'), true, false);
+        spl_autoload_register(array('ComposerAutoloaderInitbf53eac01490a8bb2135efd4dae92556', 'loadClassLoader'), true, true);
         self::$loader = $loader = new \Composer\Autoload\ClassLoader(\dirname(\dirname(__FILE__)));
         spl_autoload_unregister(array('ComposerAutoloaderInitbf53eac01490a8bb2135efd4dae92556', 'loadClassLoader'));
 
@@ -50,7 +50,7 @@ class ComposerAutoloaderInitbf53eac01490a8bb2135efd4dae92556
             }
         }
 
-        $loader->register(false);
+        $loader->register(true);
 
         if ($useStaticLoader) {
             $includeFiles = Composer\Autoload\ComposerStaticInitbf53eac01490a8bb2135efd4dae92556::$files;

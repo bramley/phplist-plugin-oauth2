@@ -1,11 +1,16 @@
 {
     "config": {
         "vendor-dir": "plugins/OAuth2/vendor",
-        "prepend-autoloader": false,
         "optimize-autoloader": true
     },
     "require": {
         "javanile/php-imap2": "*",
         "thenetworg/oauth2-azure": "^2.1"
+    },
+    "extra": {
+        "1": "Common Plugin provides psr/container, do not install to avoid version problems"
+    },
+    "replace": {
+        "psr/container": "*"
     }
 }
