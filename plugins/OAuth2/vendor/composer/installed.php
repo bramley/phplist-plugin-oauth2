@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '488eafefbe770d758743b38e5f5f4fc638a45fed',
+    'reference' => 'a3149e472a253549f98b04c5999a5ad344e88f02',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '488eafefbe770d758743b38e5f5f4fc638a45fed',
+      'reference' => 'a3149e472a253549f98b04c5999a5ad344e88f02',
     ),
     'firebase/php-jwt' => 
     array (
@@ -55,6 +55,15 @@
       array (
       ),
       'reference' => '67c26b443f348a51926030c83481b85718457d3d',
+    ),
+    'hayageek/oauth2-yahoo' => 
+    array (
+      'pretty_version' => '2.0.5',
+      'version' => '2.0.5.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '57fb5b979fdca93bd087e62a3a3c67d2e31c0cfd',
     ),
     'javanile/php-imap2' => 
     array (

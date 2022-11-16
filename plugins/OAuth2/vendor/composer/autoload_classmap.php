@@ -100,6 +100,8 @@ return array(
     'GuzzleHttp\\RetryMiddleware' => $vendorDir . '/guzzlehttp/guzzle/src/RetryMiddleware.php',
     'GuzzleHttp\\TransferStats' => $vendorDir . '/guzzlehttp/guzzle/src/TransferStats.php',
     'GuzzleHttp\\Utils' => $vendorDir . '/guzzlehttp/guzzle/src/Utils.php',
+    'Hayageek\\OAuth2\\Client\\Provider\\Yahoo' => $vendorDir . '/hayageek/oauth2-yahoo/src/Provider/Yahoo.php',
+    'Hayageek\\OAuth2\\Client\\Provider\\YahooUser' => $vendorDir . '/hayageek/oauth2-yahoo/src/Provider/YahooUser.php',
     'Javanile\\Imap2\\Acl' => $vendorDir . '/javanile/php-imap2/src/Acl.php',
     'Javanile\\Imap2\\BodyStructure' => $vendorDir . '/javanile/php-imap2/src/BodyStructure.php',
     'Javanile\\Imap2\\Connection' => $vendorDir . '/javanile/php-imap2/src/Connection.php',

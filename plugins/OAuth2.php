@@ -38,7 +38,20 @@ class OAuth2 extends phplistPlugin
 
     public function __construct()
     {
+        $providers = [
+            'office365' => 'Microsoft Office365/Outlook',
+            "yahoo" => 'Yahoo',
+        ];
+        $defaultProvider = 'office365';
         $this->settings = array(
+            'oauth2_provider' => [
+                'description' => s('OAuth2 provider'),
+                'type' => 'select',
+                'value' => $defaultProvider,
+                'values' => $providers,
+                'allowempty' => false,
+                'category' => 'OAuth2',
+            ],
             'oauth2_tenant_id' => [
                 'description' => s('Tenant ID'),
                 'type' => 'text',
