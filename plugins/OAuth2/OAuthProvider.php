@@ -2,6 +2,12 @@
 
 namespace phpList\plugin\OAuth2;
 
+use GuzzleHttp\Client;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\MessageFormatter;
+use GuzzleHttp\Middleware;
+use phpList\plugin\Common\Logger;
+
 class OAuthProvider implements \PHPMailer\PHPMailer\OAuthTokenProvider
 {
     /**
@@ -11,7 +17,20 @@ class OAuthProvider implements \PHPMailer\PHPMailer\OAuthTokenProvider
      */
     public static function getProvider()
     {
-        return self::AzureProvider();
+        $logger = Logger::instance();
+        $stack = HandlerStack::create();
+        $stack->push(Middleware::log($logger, new MessageFormatter('Response {code} {res_body}'), 'debug'));
+        $stack->push(Middleware::log($logger, new MessageFormatter('Request {method} {uri} {req_body}'), 'debug'));
+
+        $collaborators = ['httpClient' => new Client(['handler' => $stack])];
+        $options = [
+            'clientId' => getConfig('oauth2_client_id'),
+            'clientSecret' => getConfig('oauth2_client_secret'),
+            'redirectUri' => getConfig('oauth2_client_redirect_url'),
+        ];
+        $provider = self::AzureProvider($options, $collaborators);
+
+        return $provider;
     }
 
     /**
@@ -57,22 +76,17 @@ class OAuthProvider implements \PHPMailer\PHPMailer\OAuthTokenProvider
      *
      * @return TheNetworg\OAuth2\Client\Provider\Azure
      */
-    private static function AzureProvider()
+    private static function AzureProvider($options, $collaborators)
     {
-        $scopes = [
+        $options['scopes'] = [
             'offline_access',
             'https://outlook.office.com/IMAP.AccessAsUser.All',
             'https://outlook.office.com/SMTP.Send',
             'openid',
             'email',
         ];
-        $provider = new \TheNetworg\OAuth2\Client\Provider\Azure([
-            'clientId' => getConfig('oauth2_client_id'),
-            'clientSecret' => getConfig('oauth2_client_secret'),
-            'redirectUri' => getConfig('oauth2_client_redirect_url'),
-            'scopes' => $scopes,
-            'defaultEndPointVersion' => '2.0',
-        ]);
+        $options['defaultEndPointVersion'] = '2.0';
+        $provider = new \TheNetworg\OAuth2\Client\Provider\Azure($options, $collaborators);
         $provider->tenant = getConfig('oauth2_tenant_id');
 
         return $provider;
