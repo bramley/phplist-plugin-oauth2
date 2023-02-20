@@ -38,6 +38,10 @@ class OAuth2 extends phplistPlugin
 
     public function __construct()
     {
+        global $public_scheme, $website, $adminpages;
+
+        $redirectUrl = sprintf('%s://%s%s/?pi=%s&page=%s', $public_scheme, getConfig('website'), $adminpages, __CLASS__, 'authorise');
+
         $this->settings = array(
             'oauth2_tenant_id' => [
                 'description' => s('Tenant ID'),
@@ -63,7 +67,7 @@ class OAuth2 extends phplistPlugin
             'oauth2_client_redirect_url' => [
                 'description' => s('Redirect URL'),
                 'type' => 'text',
-                'value' => '',
+                'value' => $redirectUrl,
                 'allowempty' => false,
                 'category' => 'OAuth2',
             ],
