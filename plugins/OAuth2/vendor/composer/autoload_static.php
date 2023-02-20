@@ -8,10 +8,10 @@ class ComposerStaticInitbf53eac01490a8bb2135efd4dae92556
 {
     public static $files = array (
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
-        'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
-        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
+        'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '9b59d1b0dc9f17a96044da689a464ead' => __DIR__ . '/..' . '/javanile/php-imap2/bootstrap.php',
     );
@@ -44,6 +44,10 @@ class ComposerStaticInitbf53eac01490a8bb2135efd4dae92556
         'J' => 
         array (
             'Javanile\\Imap2\\' => 15,
+        ),
+        'H' => 
+        array (
+            'Hayageek\\OAuth2\\Client\\' => 23,
         ),
         'G' => 
         array (
@@ -98,6 +102,10 @@ class ComposerStaticInitbf53eac01490a8bb2135efd4dae92556
         'Javanile\\Imap2\\' => 
         array (
             0 => __DIR__ . '/..' . '/javanile/php-imap2/src',
+        ),
+        'Hayageek\\OAuth2\\Client\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/hayageek/oauth2-yahoo/src',
         ),
         'GuzzleHttp\\Psr7\\' => 
         array (
@@ -222,6 +230,8 @@ class ComposerStaticInitbf53eac01490a8bb2135efd4dae92556
         'GuzzleHttp\\RetryMiddleware' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/RetryMiddleware.php',
         'GuzzleHttp\\TransferStats' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/TransferStats.php',
         'GuzzleHttp\\Utils' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Utils.php',
+        'Hayageek\\OAuth2\\Client\\Provider\\Yahoo' => __DIR__ . '/..' . '/hayageek/oauth2-yahoo/src/Provider/Yahoo.php',
+        'Hayageek\\OAuth2\\Client\\Provider\\YahooUser' => __DIR__ . '/..' . '/hayageek/oauth2-yahoo/src/Provider/YahooUser.php',
         'Javanile\\Imap2\\Acl' => __DIR__ . '/..' . '/javanile/php-imap2/src/Acl.php',
         'Javanile\\Imap2\\BodyStructure' => __DIR__ . '/..' . '/javanile/php-imap2/src/BodyStructure.php',
         'Javanile\\Imap2\\Connection' => __DIR__ . '/..' . '/javanile/php-imap2/src/Connection.php',

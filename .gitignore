@@ -16,6 +16,10 @@ plugins/OAuth2/vendor/guzzlehttp/psr7/*
 !plugins/OAuth2/vendor/guzzlehttp/psr7/LICENSE
 !plugins/OAuth2/vendor/guzzlehttp/psr7/src/
 
+plugins/OAuth2/vendor/hayageek/oauth2-yahoo/*
+!plugins/OAuth2/vendor/hayageek/oauth2-yahoo/LICENSE
+!plugins/OAuth2/vendor/hayageek/oauth2-yahoo/src/
+
 plugins/OAuth2/vendor/javanile/php-imap2/*
 !plugins/OAuth2/vendor/javanile/php-imap2/LICENSE
 !plugins/OAuth2/vendor/javanile/php-imap2/bootstrap.php

@@ -28,7 +28,15 @@ class OAuthProvider implements \PHPMailer\PHPMailer\OAuthTokenProvider
             'clientSecret' => getConfig('oauth2_client_secret'),
             'redirectUri' => getConfig('oauth2_client_redirect_url'),
         ];
-        $provider = self::AzureProvider($options, $collaborators);
+
+        switch (getConfig('oauth2_provider')) {
+             case 'yahoo':
+                $provider = self::YahooProvider($options, $collaborators);
+                break;
+            case 'office365':
+            default:
+                $provider = self::AzureProvider($options, $collaborators);
+        }
 
         return $provider;
     }
@@ -88,6 +96,18 @@ class OAuthProvider implements \PHPMailer\PHPMailer\OAuthTokenProvider
         $options['defaultEndPointVersion'] = '2.0';
         $provider = new \TheNetworg\OAuth2\Client\Provider\Azure($options, $collaborators);
         $provider->tenant = getConfig('oauth2_tenant_id');
+
+        return $provider;
+    }
+
+    /**
+     * Creates an OAuth2 provider for Yahoo.
+     *
+     * @return Hayageek\OAuth2\Client\Provider\Yahoo
+     */
+    private static function YahooProvider($options, $collaborators)
+    {
+        $provider = new \Hayageek\OAuth2\Client\Provider\Yahoo($options, $collaborators);
 
         return $provider;
     }
