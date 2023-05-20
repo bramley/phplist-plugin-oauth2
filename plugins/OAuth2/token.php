@@ -23,7 +23,7 @@ $authoriseUrl = new PageURL('authorise', ['pi' => $_GET['pi']]);
 ?>
 <p>
     <center>
-    <button onclick="window.location='<?=$authoriseUrl; ?>'">
+    <button onclick="window.location='<?= $authoriseUrl; ?>'">
         <img height="24" width="24" style="vertical-align:middle" src="/microsoft.svg" />
         Sign in with Microsoft to create a new access token
     </button>

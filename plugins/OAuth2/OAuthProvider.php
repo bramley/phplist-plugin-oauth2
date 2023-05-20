@@ -36,7 +36,7 @@ class OAuthProvider implements \PHPMailer\PHPMailer\OAuthTokenProvider
     /**
      * Get the access token from the config table.
      *
-     * @return League\OAuth2\Client\Token\AccessToken | null
+     * @return League\OAuth2\Client\Token\AccessToken|null
      */
     public static function getAccessTokenFromConfig()
     {
