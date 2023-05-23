@@ -554,7 +554,7 @@ if (count($bouncerules)) {
     $bounceCount = Sql_Fetch_Row_Query(sprintf('select count(*) from %s', $GLOBALS['tables']['user_message_bounce']));
     $total = $bounceCount[0];
     $counter = 0;
-    $batchSize = 500; //# @TODO make a config, to allow tweaking on bigger systems
+    $batchSize = getConfig('oauth2_rules_batch_size');
     while ($counter < $total) {
         $limit = ' limit '.$counter.', '.$batchSize;
         $counter += $batchSize;

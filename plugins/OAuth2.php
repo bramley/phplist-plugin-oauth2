@@ -78,6 +78,14 @@ class OAuth2 extends phplistPlugin
                 'max' => 20000,
                 'category' => 'OAuth2',
             ],
+            'oauth2_rules_batch_size' => [
+                'description' => s('Batch size for processing bounce rules'),
+                'type' => 'integer',
+                'value' => 100,
+                'allowempty' => false,
+                'max' => 1000,
+                'category' => 'OAuth2',
+            ],
             'oauth2_imap_mailbox' => [
                 'description' => s('IMAP Mailbox/folder, such as INBOX'),
                 'type' => 'text',
