@@ -365,16 +365,22 @@ function processPop($server, $user, $password)
         $port = '110/pop3/notls';
     }
     set_time_limit(6000);
+    $report = '';
+    $mailboxes = explode(',', getConfig('oauth2_imap_mailbox'));
 
-    $link = imap_open('{'.$server.':'.$port.'}INBOX', $user, $password);
+    foreach ($mailboxes as $mailbox) {
+        $link = imap_open('{'.$server.':'.$port.'}' . $mailbox, $user, $password);
 
-    if (!$link) {
-        outputProcessBounce($GLOBALS['I18N']->get('Cannot create POP3 connection to')." $server: ".imap_last_error());
+        if (!$link) {
+            outputProcessBounce($GLOBALS['I18N']->get('Cannot create POP3 connection to')." $server: ".imap_last_error());
 
-        return false;
+            return false;
+        }
+
+        $report .= processMessages($link, getConfig('oauth2_imap_max_bounces'));
     }
 
-    return processMessages($link, getConfig('oauth2_imap_max_bounces'));
+    return $report;
 }
 
 function processMbox($file)

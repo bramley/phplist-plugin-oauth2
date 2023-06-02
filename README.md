@@ -36,6 +36,7 @@ This plugin is free but if you install and find it useful then a donation to sup
 ## Version history ##
 
     version         Description
+    1.4.1+20230602  Allow more than one mailbox to be specified and processed
     1.4.0+20230523  Display process bounces with OAuth2 menu only when MANUALLY_PROCESS_BOUNCES is enabled
     1.3.2+20230520  Derive the redirect URL
     1.3.1+20221119  Log request and response messages

@@ -1,3 +1,6 @@
+version 1.4.1+20230602
+      Allow more than one mailbox to be specified and processed
+
 version 1.4.0+20230523
       Display process bounces with OAuth2 menu only when MANUALLY_PROCESS_BOUNCES is enabled
       When processing bounce rules allow the batch size to be configured

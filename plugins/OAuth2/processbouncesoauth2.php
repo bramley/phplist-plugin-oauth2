@@ -44,8 +44,6 @@ function imap_num_msg($imap)
 
 function imap_open($mailbox, $user, $password, $flags = 0, $retries = 0, $options = [])
 {
-    $mailbox = str_replace('INBOX', getConfig('oauth2_imap_mailbox'), $mailbox);
-
     return imap2_open($mailbox, $user, $password, $flags | OP_XOAUTH2, $retries, $options);
 }
 
