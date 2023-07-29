@@ -360,24 +360,27 @@ function processBounceData($bounceid, $msgid, $userid, $bounceDate = null)
 
 function processPop($server, $user, $password)
 {
-    $port = $GLOBALS['bounce_mailbox_port'];
+    global $bounce_mailbox_port, $bounce_mailbox_name, $bounce_mailbox_maximum;
+
+    $port = $bounce_mailbox_port;
     if (!$port) {
         $port = '110/pop3/notls';
     }
     set_time_limit(6000);
-    $report = '';
-    $mailboxes = explode(',', getConfig('oauth2_imap_mailbox'));
 
-    foreach ($mailboxes as $mailbox) {
-        $link = imap_open('{'.$server.':'.$port.'}' . $mailbox, $user, $password);
+    $mailboxNames = explode(',', $bounce_mailbox_name);
+    $report = '';
+
+    foreach ($mailboxNames as $mailboxName) {
+        $mailbox = sprintf('{%s:%s}%s', $server, $port, $mailboxName);
+        $link = imap_open($mailbox, $user, $password);
 
         if (!$link) {
-            outputProcessBounce($GLOBALS['I18N']->get('Cannot create POP3 connection to')." $server: ".imap_last_error());
+            outputProcessBounce($GLOBALS['I18N']->get('Cannot create POP3 connection to')." $mailbox: ".imap_last_error());
 
             return false;
         }
-
-        $report .= processMessages($link, getConfig('oauth2_imap_max_bounces'));
+        $report .= processMessages($link, $bounce_mailbox_maximum);
     }
 
     return $report;
@@ -385,6 +388,8 @@ function processPop($server, $user, $password)
 
 function processMbox($file)
 {
+    global $bounce_mailbox_maximum;
+
     set_time_limit(6000);
 
     if (!TEST) {
@@ -398,10 +403,10 @@ function processMbox($file)
         return false;
     }
 
-    return processMessages($link, 100000);
+    return processMessages($link, $bounce_mailbox_maximum);
 }
 
-function processMessages($link, $max = 3000)
+function processMessages($link, $max)
 {
     global $bounce_mailbox_purge_unprocessed, $bounce_mailbox_purge;
     $num = imap_num_msg($link);
@@ -560,7 +565,7 @@ if (count($bouncerules)) {
     $bounceCount = Sql_Fetch_Row_Query(sprintf('select count(*) from %s', $GLOBALS['tables']['user_message_bounce']));
     $total = $bounceCount[0];
     $counter = 0;
-    $batchSize = getConfig('oauth2_rules_batch_size');
+    $batchSize = $bounce_rules_batch_size;
     while ($counter < $total) {
         $limit = ' limit '.$counter.', '.$batchSize;
         $counter += $batchSize;
