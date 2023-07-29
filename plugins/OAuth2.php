@@ -77,29 +77,6 @@ class OAuth2 extends phplistPlugin
                 'allowempty' => true,
                 'category' => 'OAuth2',
             ],
-            'oauth2_imap_max_bounces' => [
-                'description' => s('Maximum number of bounce emails to process'),
-                'type' => 'integer',
-                'value' => 1000,
-                'allowempty' => false,
-                'max' => 20000,
-                'category' => 'OAuth2',
-            ],
-            'oauth2_rules_batch_size' => [
-                'description' => s('Batch size for processing bounce rules'),
-                'type' => 'integer',
-                'value' => 100,
-                'allowempty' => false,
-                'max' => 1000,
-                'category' => 'OAuth2',
-            ],
-            'oauth2_imap_mailbox' => [
-                'description' => s('IMAP Mailbox/folder, such as INBOX'),
-                'type' => 'text',
-                'value' => 'INBOX',
-                'allowempty' => false,
-                'category' => 'OAuth2',
-            ],
         );
         $this->topMenuLinks = [
             'token' => ['category' => 'system'],
@@ -130,7 +107,7 @@ class OAuth2 extends phplistPlugin
     {
         return [
             'Common Plugin enabled' => phpListPlugin::isEnabled('CommonPlugin'),
-            'phpList version 3.6.10 or later' => version_compare(VERSION, '3.6.10') >= 0,
+            'phpList version 3.6.14 or later' => version_compare(VERSION, '3.6.14') >= 0,
         ];
     }
 
