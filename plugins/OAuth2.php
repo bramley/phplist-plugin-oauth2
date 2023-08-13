@@ -11,9 +11,11 @@
  * @license   http://www.gnu.org/licenses/gpl.html GNU General Public License, Version 3
  */
 
-/**
+/*
  * Registers the plugin with phplist.
  */
+use function phpList\plugin\Common\adminBaseUrl;
+
 class OAuth2 extends phplistPlugin
 {
     const VERSION_FILE = 'version.txt';
@@ -30,10 +32,15 @@ class OAuth2 extends phplistPlugin
 
     public function __construct()
     {
-        global $public_scheme, $website, $adminpages;
+        $this->coderoot = __DIR__ . '/' . __CLASS__ . '/';
+        $this->version = file_get_contents($this->coderoot . self::VERSION_FILE);
 
-        $redirectUrl = sprintf('%s://%s%s/?pi=%s&page=%s', $public_scheme, getConfig('website'), $adminpages, __CLASS__, 'authorise');
+        parent::__construct();
+    }
 
+    public function activate()
+    {
+        $redirectUrl = sprintf('%s/?pi=%s&page=%s', adminBaseUrl(), __CLASS__, 'authorise');
         $this->settings = array(
             'oauth2_tenant_id' => [
                 'description' => s('Tenant ID'),
@@ -106,10 +113,7 @@ class OAuth2 extends phplistPlugin
             $this->pageTitles['processbouncesoauth2'] = 'Process bounces using OAuth2';
         }
 
-        $this->coderoot = dirname(__FILE__) . '/' . __CLASS__ . '/';
-        $this->version = file_get_contents($this->coderoot . self::VERSION_FILE);
-
-        parent::__construct();
+        parent::activate();
     }
 
     public function adminmenu()
