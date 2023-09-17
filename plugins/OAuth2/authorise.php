@@ -10,7 +10,7 @@ if (isset($_POST['refresh'])) {
         $accessToken = OAuthProvider::getAccessTokenFromConfig();
         $newAccessToken = $provider->getAccessToken(
             'refresh_token',
-            ['refresh_token' => $accessToken->getRefreshToken()]
+            ['refresh_token' => json_decode(getConfig('oauth2_refresh_token_json'))]
         );
         OAuthProvider::saveAccessTokenInConfig($newAccessToken);
         header('Location: ' . new PageURL('token', ['pi' => $_GET['pi']]));
@@ -25,7 +25,7 @@ if (isset($_POST['refresh'])) {
 
 if (!isset($_GET['code'])) {
     try {
-        $authorizationUrl = $provider->getAuthorizationUrl();
+        $authorizationUrl = $provider->getAuthorizationUrl(['prompt' => 'consent', 'access_type' => 'offline']);
         $_SESSION['OAuth2.state'] = $provider->getState();
         header('Location: ' . $authorizationUrl);
 
@@ -47,9 +47,12 @@ if (empty($_GET['state']) || (isset($_SESSION['oauth2state']) && $_GET['state'] 
 try {
     $accessToken = $provider->getAccessToken(
         'authorization_code',
-        ['code' => $_GET['code']]
+        ['code' => urldecode($_GET['code'])]
     );
     OAuthProvider::saveAccessTokenInConfig($accessToken);
+
+    $refreshToken = $accessToken->getRefreshToken();
+    SaveConfig('oauth2_refresh_token_json', json_encode($refreshToken));
 
     $resourceOwner = $provider->getResourceOwner($accessToken);
     $fields = $resourceOwner->toArray();

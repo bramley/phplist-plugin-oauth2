@@ -26,6 +26,10 @@ plugins/OAuth2/vendor/league/oauth2-client/*
 !plugins/OAuth2/vendor/league/oauth2-client/LICENSE
 !plugins/OAuth2/vendor/league/oauth2-client/src/
 
+plugins/OAuth2/vendor/league/oauth2-google/*
+!plugins/OAuth2/vendor/league/oauth2-google/LICENSE
+!plugins/OAuth2/vendor/league/oauth2-google/src/
+
 plugins/OAuth2/vendor/paragonie/random_compat/*
 !plugins/OAuth2/vendor/paragonie/random_compat/LICENSE
 !plugins/OAuth2/vendor/paragonie/random_compat/psalm-autoload.php

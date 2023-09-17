@@ -65,7 +65,7 @@ $provider = OAuthProvider::getProvider();
 try {
     $newAccessToken = $provider->getAccessToken(
         'refresh_token',
-        ['refresh_token' => $accessToken->getRefreshToken()]
+        ['refresh_token' => json_decode(getConfig('oauth2_refresh_token_json'))]
     );
 } catch (\Exception $e) {
     echo $e->getMessage();

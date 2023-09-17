@@ -5,7 +5,8 @@
     },
     "require": {
         "javanile/php-imap2": "*",
-        "thenetworg/oauth2-azure": "^2.1"
+        "thenetworg/oauth2-azure": "^2.1",
+        "league/oauth2-google": "^4.0"
     },
     "extra": {
         "1": "Common Plugin provides psr/container, do not install to avoid version problems"

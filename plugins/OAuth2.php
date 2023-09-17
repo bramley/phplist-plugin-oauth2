@@ -40,8 +40,21 @@ class OAuth2 extends phplistPlugin
 
     public function activate()
     {
+        $providers = [
+            'office365' => 'Microsoft Office365/Outlook',
+            'google' => 'Google',
+        ];
+        $defaultProvider = 'office365';
         $redirectUrl = sprintf('%s/?pi=%s&page=%s', adminBaseUrl(), __CLASS__, 'authorise');
         $this->settings = array(
+            'oauth2_provider' => [
+                'description' => s('OAuth2 provider'),
+                'type' => 'select',
+                'value' => $defaultProvider,
+                'values' => $providers,
+                'allowempty' => false,
+                'category' => 'OAuth2',
+            ],
             'oauth2_tenant_id' => [
                 'description' => s('Tenant ID'),
                 'type' => 'text',
