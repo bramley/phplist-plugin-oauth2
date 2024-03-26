@@ -1,3 +1,6 @@
+version 1.4.3+20240326
+      Handle exception when refreshing the access token, such as key expired
+
 version 1.4.2+20231019
       Use adminBaseUrl()
       Apply changes to processbounces.php from release 3.6.14

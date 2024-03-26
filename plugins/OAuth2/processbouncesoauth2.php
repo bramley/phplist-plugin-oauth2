@@ -61,10 +61,17 @@ if ($accessToken === null) {
     return;
 }
 $provider = OAuthProvider::getProvider();
-$newAccessToken = $provider->getAccessToken(
-    'refresh_token',
-    ['refresh_token' => $accessToken->getRefreshToken()]
-);
+
+try {
+    $newAccessToken = $provider->getAccessToken(
+        'refresh_token',
+        ['refresh_token' => $accessToken->getRefreshToken()]
+    );
+} catch (\Exception $e) {
+    echo $e->getMessage();
+
+    return;
+}
 OAuthProvider::saveAccessTokenInConfig($newAccessToken);
 
 $bounce_mailbox_password = $newAccessToken->getToken();
