@@ -36,6 +36,7 @@ This plugin is free but if you install and find it useful then a donation to sup
 ## Version history ##
 
     version         Description
+    1.5.0+20240728  Support google using the league/oauth2-google package
     1.4.3+20240326  Handle exception when refreshing the access token, such as key expired
     1.4.2+20231019  Use config.php settings added to phplist 3.6.14 instead of plugin's settings
     1.4.1+20230602  Allow more than one mailbox to be specified and processed

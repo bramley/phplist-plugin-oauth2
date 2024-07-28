@@ -61,6 +61,7 @@ class ImapClient
 
     protected $fp;
     protected $host;
+    protected $user;
     protected $cmd_tag;
     protected $cmd_num = 0;
     protected $resourceid;
