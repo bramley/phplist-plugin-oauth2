@@ -18,10 +18,15 @@ return $config->setRules([
         'no_superfluous_phpdoc_tags' => false,
         'ordered_imports' => [
             'sort_algorithm' => 'alpha',
-            'imports_order' => ['class', 'function', 'const']
+            'imports_order' => ['class', 'function', 'const'],
         ],
         'blank_line_after_namespace' => true,
+        'single_line_comment_style' => false,
         'visibility_required' => false,
+        'phpdoc_to_comment' => false,
+        'type_declaration_spaces' => false,
+        'global_namespace_import' => false,
+        'fully_qualified_strict_types' => false,
         'echo_tag_syntax' => false,
     ])
     ->setFinder($finder)
