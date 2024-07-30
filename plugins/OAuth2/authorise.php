@@ -25,7 +25,12 @@ if (isset($_POST['refresh'])) {
 
 if (!isset($_GET['code'])) {
     try {
-        $authorizationUrl = $provider->getAuthorizationUrl(['prompt' => 'consent', 'access_type' => 'offline']);
+        $options = ['prompt' => 'consent', 'access_type' => 'offline'];
+
+        if (isset($_GET['email'])) {
+            $options['login_hint'] = $_GET['email'];
+        }
+        $authorizationUrl = $provider->getAuthorizationUrl($options);
         $_SESSION['OAuth2.state'] = $provider->getState();
         header('Location: ' . $authorizationUrl);
 
