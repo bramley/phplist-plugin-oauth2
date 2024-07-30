@@ -1,3 +1,8 @@
+version 1.6.0+20240803
+      Avoid php deprecation warnings
+      Use login hint on authorisation URL
+      During sending refresh the token when necessary
+
 version 1.5.0+20240728
       Support google using the league/oauth2-google package
       Update CS Fixer

@@ -8,7 +8,7 @@ use GuzzleHttp\MessageFormatter;
 use GuzzleHttp\Middleware;
 use phpList\plugin\Common\Logger;
 
-class OAuthProvider implements \PHPMailer\PHPMailer\OAuthTokenProvider
+class OAuthProvider
 {
     /**
      * Factory method to create a provider.
@@ -61,22 +61,6 @@ class OAuthProvider implements \PHPMailer\PHPMailer\OAuthTokenProvider
     public static function saveAccessTokenInConfig($accessToken)
     {
         SaveConfig('oauth2_access_token_json', json_encode($accessToken));
-    }
-
-    /**
-     * Called by phpmailer to get the bearer token.
-     *
-     * @return string
-     */
-    public function getOauth64()
-    {
-        global $bounce_mailbox_user;
-
-        $user = $bounce_mailbox_user;
-        $accessToken = self::getAccessTokenFromConfig();
-        $auth = base64_encode("user=$user\001auth=Bearer $accessToken\001\001");
-
-        return $auth;
     }
 
     /**

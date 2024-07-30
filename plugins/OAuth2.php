@@ -14,6 +14,8 @@
 /*
  * Registers the plugin with phplist.
  */
+use phpList\plugin\OAuth2\OAuthProvider;
+
 use function phpList\plugin\Common\adminBaseUrl;
 
 class OAuth2 extends phplistPlugin
@@ -121,6 +123,7 @@ class OAuth2 extends phplistPlugin
         return [
             'Common Plugin enabled' => phpListPlugin::isEnabled('CommonPlugin'),
             'phpList version 3.6.14 or later' => version_compare(VERSION, '3.6.14') >= 0,
+            'php version 8' => version_compare(PHP_VERSION, '8') > 0,
         ];
     }
 
@@ -132,10 +135,45 @@ class OAuth2 extends phplistPlugin
     public function messageHeaders($mail)
     {
         if (getConfig('oauth2_use_for_sending')) {
-            $mail->AuthType = 'XOAUTH2';
-            $mail->setOAuth(new phpList\plugin\OAuth2\OAuthProvider());
+            $this->authenticateUsingOAuth($mail);
         }
 
         return [];
+    }
+
+    private function authenticateUsingOAuth($mail)
+    {
+        global $phpmailer_smtpuser;
+
+        static $tokenProvider;
+
+        $accessToken = OAuthProvider::getAccessTokenFromConfig();
+
+        if ($accessToken->hasExpired()) {
+            $provider = OAuthProvider::getProvider();
+            $newAccessToken = $provider->getAccessToken(
+                'refresh_token',
+                ['refresh_token' => json_decode(getConfig('oauth2_refresh_token_json'))]
+            );
+            OAuthProvider::saveAccessTokenInConfig($newAccessToken);
+            $accessToken = $newAccessToken;
+            $tokenProvider = null;
+        }
+
+        if ($tokenProvider === null) {
+            $oAuth64 = base64_encode("user=$phpmailer_smtpuser\001auth=Bearer $accessToken\001\001");
+            $tokenProvider = new class($oAuth64) implements \PHPMailer\PHPMailer\OAuthTokenProvider {
+                public function __construct(private $oAuth64)
+                {
+                }
+
+                public function getOauth64()
+                {
+                    return $this->oAuth64;
+                }
+            };
+        }
+        $mail->AuthType = 'XOAUTH2';
+        $mail->setOAuth($tokenProvider);
     }
 }
