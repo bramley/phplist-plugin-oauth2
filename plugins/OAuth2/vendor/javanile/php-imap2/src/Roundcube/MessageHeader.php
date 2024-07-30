@@ -175,6 +175,8 @@ class MessageHeader
      */
     public $folder;
 
+    public $bodypart;
+    public $envelope;
     /**
      * Other message headers
      *
