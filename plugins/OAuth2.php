@@ -123,6 +123,7 @@ class OAuth2 extends phplistPlugin
     {
         return [
             'Common Plugin enabled' => phpListPlugin::isEnabled('CommonPlugin'),
+            'IMAP2 Plugin enabled' => phpListPlugin::isEnabled('Imap2'),
             'phpList version 3.6.14 or later' => version_compare(VERSION, '3.6.14') >= 0,
             'php version 8' => version_compare(PHP_VERSION, '8') > 0,
         ];

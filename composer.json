@@ -4,7 +4,6 @@
         "optimize-autoloader": true
     },
     "require": {
-        "javanile/php-imap2": "*",
         "thenetworg/oauth2-azure": "^2.1",
         "league/oauth2-google": "^4.0"
     },
