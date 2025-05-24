@@ -161,7 +161,8 @@ class OAuth2 extends phplistPlugin
         }
 
         if ($tokenProvider === null) {
-            $oAuth64 = base64_encode("user=$phpmailer_smtpuser\001auth=Bearer $accessToken\001\001");
+            $email = getConfig('oauth2_id_email');
+            $oAuth64 = base64_encode("user=$email\001auth=Bearer $accessToken\001\001");
             $tokenProvider = new class($oAuth64) implements \PHPMailer\PHPMailer\OAuthTokenProvider {
                 public function __construct(private $oAuth64)
                 {
@@ -173,6 +174,7 @@ class OAuth2 extends phplistPlugin
                 }
             };
         }
+        $mail->SMTPAuth = true;
         $mail->AuthType = 'XOAUTH2';
         $mail->setOAuth($tokenProvider);
     }

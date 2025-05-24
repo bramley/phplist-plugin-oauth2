@@ -75,5 +75,6 @@ try {
 OAuthProvider::saveAccessTokenInConfig($newAccessToken);
 
 $bounce_mailbox_password = $newAccessToken->getToken();
+$bounce_mailbox_user = getConfig('oauth2_id_email');
 
 require __DIR__ . '/processbounces.php';
