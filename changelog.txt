@@ -1,3 +1,7 @@
+version 1.6.1+20250525
+      Use the token email address instead of the SMTP and bounce email addresses
+      CS Fixer
+
 version 1.6.0+20240803
       Avoid php deprecation warnings
       Use login hint on authorisation URL
