@@ -36,6 +36,7 @@ This plugin is free but if you install and find it useful then a donation to sup
 ## Version history ##
 
     version         Description
+    1.6.2+20250526  Avoid php warning when $bounce_mailbox_user has not been set
     1.6.1+20250525  Use the token email address instead of the SMTP and bounce email addresses
     1.6.0+20240803  Refresh the token when necessary when sending emails using SMTP
     1.5.0+20240728  Support google using the league/oauth2-google package

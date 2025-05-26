@@ -1,3 +1,6 @@
+version 1.6.2+20250526
+      Avoid php warning when $bounce_mailbox_user has not been set
+
 version 1.6.1+20250525
       Use the token email address instead of the SMTP and bounce email addresses
       CS Fixer

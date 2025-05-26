@@ -19,7 +19,7 @@ if ($accessToken !== null) {
 </form>
 END;
 }
-$authoriseUrl = new PageURL('authorise', ['pi' => $_GET['pi'], 'email' => $bounce_mailbox_user]);
+$authoriseUrl = new PageURL('authorise', ['pi' => $_GET['pi'], 'email' => $bounce_mailbox_user ?? '']);
 ?>
 <p>
     <center>
