@@ -36,9 +36,10 @@ class OAuth2 extends phplistPlugin
     public function __construct()
     {
         $this->coderoot = __DIR__ . '/' . __CLASS__ . '/';
-        $this->version = file_get_contents($this->coderoot . self::VERSION_FILE);
 
         parent::__construct();
+
+        $this->version = file_get_contents($this->coderoot . self::VERSION_FILE);
     }
 
     public function activate()
@@ -121,9 +122,13 @@ class OAuth2 extends phplistPlugin
      */
     public function dependencyCheck()
     {
+        global $plugins;
+
         return [
-            'Common Plugin enabled' => phpListPlugin::isEnabled('CommonPlugin'),
-            'IMAP2 Plugin enabled' => phpListPlugin::isEnabled('Imap2'),
+            'IMAP2 plugin v1.1.0 or later enabled' => (
+                phpListPlugin::isEnabled('Imap2')
+                && version_compare($plugins['Imap2']->version, '1.1.0') >= 0
+            ),
             'phpList version 3.6.14 or later' => version_compare(VERSION, '3.6.14') >= 0,
             'php version 8' => version_compare(PHP_VERSION, '8') > 0,
         ];

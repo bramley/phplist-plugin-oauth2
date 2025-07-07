@@ -8,9 +8,11 @@
         "league/oauth2-google": "^4.0"
     },
     "extra": {
-        "1": "Common Plugin provides psr/container, do not install to avoid version problems"
+        "1": "Common Plugin provides psr/container, do not install to avoid version problems",
+        "2": "Imap2 Plugin provides guzzlehttp/psr7, do not install to avoid version problems"
     },
     "replace": {
-        "psr/container": "*"
+        "psr/container": "*",
+        "guzzlehttp/psr7": "*"
     }
 }

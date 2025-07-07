@@ -1,3 +1,7 @@
+version 1.7.0+20250707
+      Remove javanile/php-imap2
+      Update composer packages
+
 version 1.6.2+20250526
       Avoid php warning when $bounce_mailbox_user has not been set
 

@@ -6,22 +6,11 @@ This plugin uses OAuth2 for authentication when retrieving bounces and sending e
 
 ## Installation ##
 
-### Dependencies ###
-
-It requires the Common Plugin to be installed. You must install, or upgrade to, the latest version. See <https://github.com/bramley/phplist-plugin-common>
-
-### Install through phplist ###
-
-The recommended way to install is through the Plugins page (menu Config > Manage Plugins) using the package
-URL `https://github.com/bramley/phplist-plugin-oauth2/archive/master.zip`.
-The installation should create
-
-* the file OAuth2.php
-* the directory OAuth2
+See the plugin's page within the phplist documentation site <https://resources.phplist.com/plugin/oauth2> for installation guidance.
 
 ## Usage ##
 
-For guidance on using the plugin see the plugin's page within the phplist documentation site <https://resources.phplist.com/plugin/oauth2>
+For guidance on using the plugin see <https://resources.phplist.com/plugin/oauth2>
 
 ## Support ##
 
@@ -36,6 +25,7 @@ This plugin is free but if you install and find it useful then a donation to sup
 ## Version history ##
 
     version         Description
+    1.7.0+20250707  Now Imap2 plugin must be installed separately
     1.6.2+20250526  Avoid php warning when $bounce_mailbox_user has not been set
     1.6.1+20250525  Use the token email address instead of the SMTP and bounce email addresses
     1.6.0+20240803  Refresh the token when necessary when sending emails using SMTP
