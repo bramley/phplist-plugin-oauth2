@@ -25,6 +25,7 @@ This plugin is free but if you install and find it useful then a donation to sup
 ## Version history ##
 
     version         Description
+    1.7.1+20250716  Use processbounces.php from release 3.6.16
     1.7.0+20250707  Now Imap2 plugin must be installed separately
     1.6.2+20250526  Avoid php warning when $bounce_mailbox_user has not been set
     1.6.1+20250525  Use the token email address instead of the SMTP and bounce email addresses
