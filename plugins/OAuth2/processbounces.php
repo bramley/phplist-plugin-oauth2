@@ -2,8 +2,6 @@
 
 namespace phpList\plugin\OAuth2;
 
-require_once dirname(__FILE__).'/accesscheck.php';
-
 if (!$GLOBALS['commandline'] && !$GLOBALS['inRemoteCall']) {
     // browser session
     ob_end_flush();

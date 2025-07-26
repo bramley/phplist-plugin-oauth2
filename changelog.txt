@@ -1,3 +1,6 @@
+version 1.7.2+20250726
+      Remove line mistakenly added in previous commit
+
 version 1.7.1+20250716
       Re-apply changes to file from 3.6.16
 
